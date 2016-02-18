@@ -30,3 +30,13 @@
 
 # Debug files
 *.dSYM/
+
+
+#codelite IDE
+/Debug/
+*.mk
+*.project
+
+#clion IDE
+*/.idea/
+*/CMakeLists.txt
