@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lego Mind Storms march 23</string>
+    <string name="Status_Signal">Hey! Congratulations you can read!</string>
+    <string name="one_button">Click Me Nerd</string>
+    <string name="backy">Get Back</string>
+    <string name="frontal">Forward March</string>
+    <string name="lefty">Left </string>
+    <string name="righty">Right </string>
+</resources>
