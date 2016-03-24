@@ -96,7 +96,6 @@ public void writeMessage(byte msg, String nxt) throws InterruptedException{
             OutputStreamWriter out=new OutputStreamWriter(connSock.getOutputStream());
             out.write(msg);
             out.flush();
-            // add return statement
 
             Thread.sleep(1000);
 
