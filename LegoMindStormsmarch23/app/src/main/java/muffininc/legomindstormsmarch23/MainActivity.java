@@ -29,44 +29,46 @@ public class MainActivity extends AppCompatActivity {
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-        Button bluetooth_button = (Button)findViewById(R.id.bluetooth_button);
-        Button one_button = (Button)findViewById(R.id.one_button);
-        Button front_button = (Button)findViewById(R.id.front_button);
-        Button back_button = (Button)findViewById(R.id.back_button);
-        Button left_button = (Button)findViewById(R.id.left_button);
-        Button right_button = (Button)findViewById(R.id.right_button);
+        Button bluetooth_button = (Button) findViewById(R.id.bluetooth_button);
+        Button one_button = (Button) findViewById(R.id.one_button);
+        Button front_button = (Button) findViewById(R.id.front_button);
+        Button back_button = (Button) findViewById(R.id.back_button);
+        Button left_button = (Button) findViewById(R.id.left_button);
+        Button right_button = (Button) findViewById(R.id.right_button);
         //MainActivity bth  = new MainActivity();
 
 
-
-
         bluetooth_button.setOnClickListener(
-                new Button.OnClickListener(){
+                new Button.OnClickListener() {
                     public void onClick(View v) {
                         TextView bluetoothproof1 = (TextView) findViewById(R.id.bluetoothproof1);
                         TextView bluetoothproof2 = (TextView) findViewById(R.id.bluetoothproof2);
                         TextView bluetoothproof3 = (TextView) findViewById(R.id.bluetoothproof3);
                         TextView bluetoothproof4 = (TextView) findViewById(R.id.bluetoothproof4);
                         btj.enableBT();
-                            if (btj.enableBT = 1){
-                                bluetoothproof1.setText("BT enabled");
-                            }
+                        if (btj.enableBT()) {
+                            bluetoothproof1.setText("BT enabled");
+                        }
 
-                            if (btj.connectToNXTs() == true) {
-                                bluetoothproof2.setText("NXT connected");
-                            }
-                            else {
-                                bluetoothproof2.setText("NXT not connected");
-                            }
+                        if (btj.connectToNXTs()) {
+                            bluetoothproof2.setText("NXT connected");
+                        } else {
+                            bluetoothproof2.setText("NXT not connected");
+                        }
+                        byte[] stuur = new byte[]{(byte) 0x01, (byte) 0x9B, (byte) 0x00, (byte) 0x00, (byte) 0x80, (byte) 0x00, (byte) 0x00, (byte) 0xA4,
+                                (byte) 0x00, (byte) 0x01, (byte) 0x14, (byte) 0xA6, (byte) 0x00, (byte) 0x01};
 
-                            if (btj.writeMessage(byte msg, String nxt) == 1) {
+                        try {
+                            if (btj.writeMessage(stuur)) {
                                 bluetoothproof3.setText("Message written");
                             }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
 
-                        btj.readMessage(String nxt);
-                            if (btj.readMessage = -1) {
-                                bluetoothproof2.setText("Message read");
-                            }
+                        if (btj.readMessage()) {
+                            bluetoothproof2.setText("Message read");
+                        }
 
                         TextView StatusSign = (TextView) findViewById(R.id.StatusSign);
                         StatusSign.setText("It's blue tooth");
@@ -76,49 +78,49 @@ public class MainActivity extends AppCompatActivity {
         );
 
         one_button.setOnClickListener(
-                new Button.OnClickListener(){
-                   public void onClick(View v) {
-                    TextView StatusSign = (TextView)findViewById(R.id.StatusSign);
-                       StatusSign.setText("Hey look you pressed it! Sucker!");
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        TextView StatusSign = (TextView) findViewById(R.id.StatusSign);
+                        StatusSign.setText("Hey look you pressed it! Sucker!");
 
-                   }
+                    }
                 }
         );
 
 
-    front_button.setOnClickListener(
-            new Button.OnClickListener(){
-        public void onClick(View v) {
-            TextView StatusSign = (TextView)findViewById(R.id.StatusSign);
-            StatusSign.setText("Forward March!");
-        }
+        front_button.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        TextView StatusSign = (TextView) findViewById(R.id.StatusSign);
+                        StatusSign.setText("Forward March!");
+                    }
+                }
+        );
+        back_button.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        TextView StatusSign = (TextView) findViewById(R.id.StatusSign);
+                        StatusSign.setText("Back It Up");
+                    }
+                }
+        );
+        left_button.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        TextView StatusSign = (TextView) findViewById(R.id.StatusSign);
+                        StatusSign.setText("To the Left To the Left!");
+                    }
+                }
+        );
+        right_button.setOnClickListener(
+                new Button.OnClickListener() {
+                    public void onClick(View v) {
+                        TextView StatusSign = (TextView) findViewById(R.id.StatusSign);
+                        StatusSign.setText("Forward March!");
+                    }
+                }
+        );
     }
-    );
-    back_button.setOnClickListener(
-            new Button.OnClickListener(){
-        public void onClick(View v) {
-            TextView StatusSign = (TextView)findViewById(R.id.StatusSign);
-            StatusSign.setText("Back It Up");
-        }
-    }
-    );
-    left_button.setOnClickListener(
-            new Button.OnClickListener(){
-        public void onClick(View v) {
-            TextView StatusSign = (TextView)findViewById(R.id.StatusSign);
-            StatusSign.setText("To the Left To the Left!");
-        }
-    }
-    );
-    right_button.setOnClickListener(
-            new Button.OnClickListener(){
-        public void onClick(View v) {
-            TextView StatusSign = (TextView)findViewById(R.id.StatusSign);
-            StatusSign.setText("Forward March!");
-        }
-    }
-    );
-}
 
     public boolean onCreateOptionMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
