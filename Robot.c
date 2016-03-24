@@ -15,12 +15,12 @@ float get_offset()
 {
 	playSound(soundBeepBeep);
 	wait10Msec(500);
-	max_light = SensorValue[LichtR];
+	max_light = SensorValue[LichtL];
 	playSound(soundBeepBeep);
 	wait10Msec(500);
-	min_light = SensorValue[LichtL];
+	min_light = SensorValue[LichtR];
 	playSound(soundBeepBeep);
-	float offset = (max_light + min_light) / 2;
+	float offset = ((max_light + min_light) / 2) + 2;
 	return offset;
 }
 
@@ -30,35 +30,28 @@ float get_offset()
 
 task main()
 {
-	float Tp = 70; // target power bij het rechtdoorrijden van de robot.
-	float Kp = 4.6666666666666667; // constante varriable die representatief is aan de proportional range van de error.
-	float Ki = 0.46666666666666667; // Constante varriable die een correctie geeft voor de integral. deze word grotendeels getweakt via trial en error
-	float Kd = 466.66666666666667; // Constante varriable die een correctie geeft voor de derivative. Ook deze word grootendeels getweakt via trial en error.
-	float offset = get_offset(); // gemiddelde van de minimum en maximum leeswaardes van de sensor ((40 + 70) / 2)
+	float Tp = 100; // target power bij het rechtdoorrijden van de robot.
+	float Kp = 10; // constante varriable die representatief is aan de proportional range van de error.
+	float Ki = 1; // Constante varriable die een correctie geeft voor de integral. deze word grotendeels getweakt via trial en error
+	float Kd = 70; // Constante varriable die een correctie geeft voor de derivative. Ook deze word grootendeels getweakt via trial en error.
+	float offset = get_offset(); // gemiddelde van de minimum en maximum leeswaardes van de sensor ((minlicht + maxlicht) / 2) + 2
 	float integral = 0; // corriectiewaarde die aan de error word toegevoegd om te compenseren voor het "verleden"
 	float perverror = 0; //hierin word de error opgeslagen uit de vorrige scanloop om de derivative mee te berekenen.
 	float derivative = 0; //correctiewaarde die aan de error word toegevoegd om te "voorspellen" wat te volgende error gaat worden en hier zo goed mogelijk rekening mee te houden.
 	float error = 0;
 	while(true)
 	{
-		float Grayscale = SensorValue[LichtL];
+		float Grayscale = SensorValue[LichtR];
 		if (error == 0 || (perverror < 0 && error > 0) || (perverror > 0 && error < 0))
 		{
 			integral = 0;
-		}
-		if (Grayscale < min_light)
-		{
-			Grayscale = min_light;
-		}
-		if (Grayscale > max_light)
-		{
-			Grayscale = max_light;
 		}
 		error = Grayscale - offset; // berekent de error value (hoever de sensor van de lijn zit.)
 		integral = (2/3)*integral + error; //opsomming van de integrals
 		derivative = error - perverror;
 		//datalogAddValue(derivative, derivative);
 		float turn = (Kp * error) + (Ki * integral) + (Kd * derivative); // berekening waarbij bepaald word hoeveel er bijgestuurd moet worden om op de lijn te blijven.
+
 		float speedL = (Tp - turn);
 		float speedR = (Tp + turn);
 		nxtDisplayString(6, "R= %d, L= %d", speedR, speedL);
