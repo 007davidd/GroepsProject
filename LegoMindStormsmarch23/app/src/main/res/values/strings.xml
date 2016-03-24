@@ -6,4 +6,9 @@
     <string name="frontal">Forward March</string>
     <string name="lefty">Left </string>
     <string name="righty">Right </string>
+    <string name="blue_text">Activate Bluetooth</string>
+    <string name="bluecheck1">This is gonna check something</string>
+    <string name="bluecheck2">This is gonna also  check something</string>
+    <string name="bluecheck3">This is gonna be third</string>
+    <string name="bluecheck4">This fourth</string>
 </resources>
