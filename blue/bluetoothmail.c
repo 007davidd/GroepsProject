@@ -1,5 +1,4 @@
 
-#define pixels_per)char = 6
 
 task main(){
 		int loopnum = 0;
@@ -8,8 +7,6 @@ task main(){
 
 		eraseDisplay();
 		wait1Msec(2000);
-
-    //displayBigStringAt(25, 25 "%s", pChar, ...);
 
 		while(1){
 				string buffer, message="";
@@ -29,7 +26,7 @@ task main(){
 						nxtDisplayString(3, "result = %d", result);
 
 						if(result)
-									message = buffer;
+							message = buffer;
 									// stuur iets terug als we dat zouden willen
 									//sendMessage(3+10, message);
 						}
