@@ -3,7 +3,7 @@
 task main(){
 		int loopnum = 0;
 
-		//initialiseer display
+		//initialiseer display door alles leeg te maken
 
 		eraseDisplay();
 		wait1Msec(2000);
