@@ -1,0 +1,9 @@
+diff a/blue/bluetooth/src/bluetooth/bt.java b/blue/bluetooth/src/bluetooth/bt.java	(rejected hunks)
+@@ -10,7 +10,6 @@
+ 		enableBT();				
+ 		connectToNXTs();
+ 		
+-							(byte)0x00,(byte)0x01,(byte)0x14,(byte)0xA6,(byte)0x00,(byte)0x01};
+ 		byte [] motor = new byte[] {(byte)0x01,(byte)0x9B,(byte)0x00,(byte)0x00,(byte)0x80,(byte)0x00,(byte)0x00,(byte)0xA4,	
+ 							(byte)0x00,(byte)0x01,(byte)0x14,(byte)0xA6,(byte)0x00,(byte)0x01}; //motor aan   command
+ 		
