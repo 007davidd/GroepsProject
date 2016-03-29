@@ -1,97 +1,129 @@
 package muffininc.legomindstormsmarch23;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
-import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.UUID;
 
-public class bth  {
-    final String nxt1 = "00:16:53:18:BC:50";
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
+
+import android.util.Log;
+
+public class bth {
+
+//Target NXTs for communication
+
+    final String nxt = "00:16:53:18:BC:50";
+
     BluetoothAdapter localAdapter;
-    BluetoothSocket socket_nxt1;
-    BluetoothSocket socket_nxt2;
+    BluetoothSocket socket_nxt;
     boolean success = false;
 
-    public bth() {
-    }
 
-    public int enableBT() {
-        this.localAdapter = BluetoothAdapter.getDefaultAdapter();
-        if(!this.localAdapter.isEnabled()) {
-            this.localAdapter.enable();
+    //Enables Bluetooth if not enabled
+    public boolean enableBT() {
+        localAdapter = BluetoothAdapter.getDefaultAdapter();
+        //If Bluetooth not enable then do it
+        if (!localAdapter.isEnabled()) {
+            localAdapter.enable();
+            while (!(localAdapter.isEnabled())) {
 
-            while(!this.localAdapter.isEnabled()) {
-                ;
             }
-
         }
-        return 1;
+        return true;
     }
 
+    //connect to both NXTs
     public boolean connectToNXTs() {
-        BluetoothDevice nxt_1 = this.localAdapter.getRemoteDevice("00:16:53:18:BC:50");
 
+
+        //get the BluetoothDevice of the NXT
+        BluetoothDevice nxt_1 = localAdapter.getRemoteDevice(nxt);
+        //try to connect to the nxt
         try {
-            this.socket_nxt1 = nxt_1.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
-            this.socket_nxt1.connect();
-            this.success = true;
-        } catch (IOException var3) {
+
+            socket_nxt = nxt_1.createRfcommSocketToServiceRecord(UUID
+                    .fromString("00001101-0000-1000-8000-00805F9B34FB"));
+
+
+            //  socket_nxt2.connect();
+
+
+            socket_nxt.connect();
+
+
+            success = true;
+
+
+        } catch (IOException e) {
             Log.d("Bluetooth", "Err: Device not found or cannot connect");
-            this.success = false;
-        }
+            success = false;
 
-        return this.success;
+
+        }
+        return success;
+
     }
 
-    public int writeMessage(byte msg, String nxt) throws InterruptedException {
-        BluetoothSocket connSock;
-        if(nxt.equals("nxt2")) {
-            connSock = this.socket_nxt2;
-        } else if(nxt.equals("nxt1")) {
-            connSock = this.socket_nxt1;
-        } else {
-            connSock = null;
-        }
 
-        if(connSock != null) {
+    public boolean writeMessage(byte[] msg) throws InterruptedException {
+        BluetoothSocket connSock = socket_nxt;
+
+        if (connSock != null) {
             try {
-                OutputStreamWriter e = new OutputStreamWriter(connSock.getOutputStream());
-                e.write(msg);
-                e.flush();
-                Thread.sleep(1000L);
-            } catch (IOException var5) {
-                var5.printStackTrace();
-            }
-        }
-        return 1;
-    }
 
-    public int readMessage(String nxt) {
-        BluetoothSocket connSock;
-        if(nxt.equals("nxt2")) {
-            connSock = this.socket_nxt2;
-        } else if(nxt.equals("nxt1")) {
-            connSock = this.socket_nxt1;
-        } else {
-            connSock = null;
-        }
+                OutputStreamWriter out = new OutputStreamWriter(connSock.getOutputStream());
+                for (int i = 0; i < 14; i++) {
+                    out.write(msg[i]);
+                }
+                out.flush();
 
-        if(connSock != null) {
-            try {
-                InputStreamReader e = new InputStreamReader(connSock.getInputStream());
-                int n = e.read();
-                return n;
-            } catch (IOException var5) {
-                var5.printStackTrace();
-                return -1;
+                Thread.sleep(1000);
+
+                return true;
+
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return false;
             }
         } else {
-            return -1;
+            //Error
+            return false;
         }
     }
+
+    public boolean readMessage() {
+        BluetoothSocket connSock;
+        int n;
+
+        connSock = socket_nxt;
+
+        if (connSock != null) {
+            try {
+
+                InputStreamReader in = new InputStreamReader(connSock.getInputStream());
+                n = in.read();
+
+                if (n > 0) {
+                    return true;
+                }
+                return false;
+
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            //Error
+            return false;
+        }
+
+    }
+
 }
