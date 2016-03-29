@@ -2,7 +2,6 @@ package nl.hu.zrb.btclient;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,19 +10,20 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.UUID;
 
 
 public class ControlActivity extends Activity {
 
     int CONNECT_BT = 2351;
     private Wachtrij<String> messageQueue;
+    ImageButton btnUp, btnDown, btnLeft, btnRight, btnFire;
     TextView tv;
     String tag = "ControlActivity";
     ThreadThatSendsCommandsByBT t;
@@ -36,6 +36,74 @@ public class ControlActivity extends Activity {
         setContentView(R.layout.activity_control);
         tv = (TextView) findViewById(R.id.textView);
         messageQueue = new Wachtrij<String>();
+
+        btnUp = (ImageButton) findViewById(R.id.imageButtonUp);
+        btnUp.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+                    messageQueue.voegToe("UP");
+                } else if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                    messageQueue.voegToe("NULL");
+                }
+                return false;
+            }
+        });
+
+        btnDown = (ImageButton) findViewById(R.id.imageButtonDown);
+        btnDown.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+                    messageQueue.voegToe("DOWN");
+                } else if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                    messageQueue.voegToe("NULL");
+                }
+                return false;
+            }
+        });
+
+
+        btnLeft = (ImageButton) findViewById(R.id.imageButtonLeft);
+        btnLeft.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+                    messageQueue.voegToe("LEFT");
+                } else if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                    messageQueue.voegToe("NULL");
+                }
+                return false;
+            }
+        });
+
+
+        btnRight = (ImageButton) findViewById(R.id.imageButtonRight);
+        btnRight.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+                    messageQueue.voegToe("RIGHT");
+                } else if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                    messageQueue.voegToe("NULL");
+                }
+                return false;
+            }
+        });
+
+        btnFire = (ImageButton) findViewById(R.id.imageButtonFire);
+        btnFire.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
+                    messageQueue.voegToe("FIRE");
+                } else if (event.getAction() == android.view.MotionEvent.ACTION_UP) {
+                    messageQueue.voegToe("NULL");
+                }
+                return false;
+            }
+        });
+
     }
 
 
@@ -53,9 +121,9 @@ public class ControlActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.connect){
+        if (id == R.id.connect) {
             Intent intent = new Intent(this, ConnectActivity.class);
-            startActivityForResult(intent,CONNECT_BT);
+            startActivityForResult(intent, CONNECT_BT);
             item.setEnabled(false);
             connectItem = item;
         }
@@ -64,8 +132,8 @@ public class ControlActivity extends Activity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode,
-                                    Intent data){
-        if(resultCode == RESULT_OK && requestCode == CONNECT_BT){
+                                    Intent data) {
+        if (resultCode == RESULT_OK && requestCode == CONNECT_BT) {
             BluetoothDevice device = data.getParcelableExtra("theDevice");
             new ConnectTask().execute(device);
         }
@@ -84,15 +152,14 @@ public class ControlActivity extends Activity {
         @Override
         protected String doInBackground(BluetoothDevice... arg0) {
             BluetoothDevice device = arg0[0];
-            try{
+            try {
 
-               myRobot.connectToDevice(device);
+                myRobot.connectToDevice(device);
                 t = new ThreadThatSendsCommandsByBT();
                 t.start();
                 return "connected";
 
-            }
-            catch(IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
                 return "error connecting";
 
@@ -101,13 +168,12 @@ public class ControlActivity extends Activity {
         }
 
         @Override
-        protected void onPostExecute(String result){
-               tv.setText(result);
-               connectItem.setEnabled(true);
+        protected void onPostExecute(String result) {
+            tv.setText(result);
+            connectItem.setEnabled(true);
         }
 
     }
-
 
 
     private class ThreadThatSendsCommandsByBT extends Thread {
@@ -136,8 +202,8 @@ public class ControlActivity extends Activity {
         }
     }
 
-    private Handler h = new Handler(){
-        public void handleMessage(Message message){
+    private Handler h = new Handler() {
+        public void handleMessage(Message message) {
             String s = (String) message.getData().get("theText");
             tv.setText(s);
             connectItem.setEnabled(true);
@@ -145,39 +211,22 @@ public class ControlActivity extends Activity {
     };
 
 
-
-    public void onUp(View v){
+    public void onUp(View v) {
         messageQueue.voegToe("UP");
     }
 
-    public void onDown(View v){
-        messageQueue.voegToe("DOWN");
-    }
 
-    public void onLeft(View v){
-        messageQueue.voegToe("LEFT");
-    }
-
-    public void onRight(View v){
-        messageQueue.voegToe("RIGHT");
-    }
-
-    public void onFire(View v){
-        messageQueue.voegToe("FIRE");
-    }
-
-    public void onA(View v){
+    public void onA(View v) {
         messageQueue.voegToe("A");
     }
 
-    public void onB(View v){
+    public void onB(View v) {
         messageQueue.voegToe("B");
     }
 
-    public void onC(View v){
+    public void onC(View v) {
         messageQueue.voegToe("C");
     }
-
 
 
 }

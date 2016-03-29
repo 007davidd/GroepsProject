@@ -20,8 +20,7 @@
         android:id="@+id/imageButtonUp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:src="@drawable/arrow_up_icon"
-        android:onClick="onUp" />
+        android:src="@drawable/arrow_up_icon" />
 
     <ImageButton
         android:layout_width="75dp"
@@ -29,16 +28,14 @@
         android:id="@+id/imageButtonLeft"
         android:layout_below="@+id/imageButtonUp"
         android:layout_toLeftOf="@+id/imageButtonFire"
-        android:src="@drawable/arrow_left_icon"
-        android:onClick="onLeft" />
+        android:src="@drawable/arrow_left_icon" />
 
     <ImageButton
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:id="@+id/imageButtonFire"
         android:layout_below="@id/imageButtonUp"
-        android:layout_alignLeft="@+id/imageButtonUp"
-        android:onClick="onFire" />
+        android:layout_alignLeft="@+id/imageButtonUp" />
 
     <ImageButton
         android:layout_width="75dp"
@@ -46,8 +43,7 @@
         android:id="@+id/imageButtonRight"
         android:layout_below="@+id/imageButtonUp"
         android:layout_toRightOf="@+id/imageButtonFire"
-        android:src="@drawable/arrow_right_icon"
-        android:onClick="onRight" />
+        android:src="@drawable/arrow_right_icon" />
 
     <ImageButton
         android:layout_width="75dp"
@@ -55,8 +51,7 @@
         android:id="@+id/imageButtonDown"
         android:layout_below="@+id/imageButtonFire"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/arrow_down_icon"
-        android:onClick="onDown" />
+        android:src="@drawable/arrow_down_icon" />
 
 </RelativeLayout>
 <LinearLayout
