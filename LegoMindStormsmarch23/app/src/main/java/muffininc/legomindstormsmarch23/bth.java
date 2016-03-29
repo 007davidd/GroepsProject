@@ -28,7 +28,7 @@ public class bth {
     public boolean enableBT() {
         localAdapter = BluetoothAdapter.getDefaultAdapter();
         //If Bluetooth not enable then do it
-        if (localAdapter.isEnabled() == false) {
+        if (!localAdapter.isEnabled()) {
             localAdapter.enable();
             while (!(localAdapter.isEnabled())) {
 
