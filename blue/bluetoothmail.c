@@ -1,6 +1,48 @@
-#pragme config (Motor, motorA, motorLinks, tmotorNXT, openLoop, encoder)
-#pragme config (Motor, motorB, motorIets, tmotorNXT, openLoop)
-#pragme config (Motor, motorC, motorRechts, tmotorNXT, openLoop)
+#pragma config (Motor, motorA, motorLinks, tmotorNXT, openLoop, encoder)
+#pragma config (Motor, motorB, motorIets, tmotorNXT, openLoop)
+#pragma config (Motor, motorC, motorRechts, tmotorNXT, openLoop)
+
+task stoprij(){
+			motor[motorLinks] = 0;
+			motor[motorRechts] = 0;
+			wait1Msec(100);
+
+}
+
+task vooruit(){
+			motor[motorLinks] = 20;
+			motor[motorRechts] = 20;
+			wait1Msec(100);
+}
+
+task achteruit(){
+			motor[motorLinks] = -20;
+			motor[motorRechts] = -20;
+			wait1Msec(100);
+}
+
+task links(){
+			motor[motorLinks] = -20;
+			motor[motorRechts] = 20;
+			int TimeL = 0;
+			while(TimeL < 10){       //om naar links en naar rechts te draaien moeten de motors maar een bepaalde tijd draaien
+					TimeL++;							//hiervoor heb ik gekozen voor een while loop die 10x 100ms wachts voordat de task wordt stopgezet
+					wait1Msec(100);			//dit is natuurlijk fine te tunen
+		 }
+			stopTask(links);
+
+}
+
+task rechts(){
+			motor[motorLinks] = 20;
+			motor[motorRechts] = -20;
+			int TimeR = 0;
+			while(TimeR < 10){
+					TimeR++;
+					wait1Msec(100);
+		 }
+			stopTask(links);
+}
 
 task main(){
 	int mailbox = 5;
@@ -83,53 +125,3 @@ task main(){
 		}
 
 }
-
-task stoprij(){
-			motor[motorLinks] = 0;
-			motor[motorRechts] = 0;
-			wait1Msec(100);
-
-}
-
-task vooruit(){
-			motor[motorLinks] = 20;
-			motor[motorRechts] = 20;
-			wait1Msec(100);
-}
-
-task achteruit(){
-			motor[motorLinks] = -20;
-			motor[motorRechts] = -20;
-			wait1Msec(100);
-}
-
-task links(){
-			motor[moterLinks] = -20;
-			motor[motorRechts] = 20;
-			int TimeL = 0;
-			while(TimeL < 10){       //om naar links en naar rechts te draaien moeten de motors maar een bepaalde tijd draaien
-					TimeL++;							//hiervoor heb ik gekozen voor een while loop die 10x 100ms wachts voordat de task wordt stopgezet
-					wait1Msec(100);			//dit is natuurlijk fine te tunen
-		 }
-			stopTask(links);
-
-}
-
-task rechts(){
-			motor[motorLinks] = 20;
-			motor[motorrechts] = -20;
-			int TimeR = 0;
-			while(TimeR < 10){
-					TimeR++;
-					wait1Msec(100);
-		 }
-			stopTask(links);
-}
-
-
-// vooruit
-// linksaf
-//rechtsaf
-// achteruit
-//stoppen
-//eventuel route beschrijving met queu
