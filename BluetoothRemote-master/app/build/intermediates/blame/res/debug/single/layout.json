@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\devicerow.xml",
+        "source": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\src\\main\\res\\layout\\devicerow.xml"
+    },
+    {
+        "merged": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_control.xml",
+        "source": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\src\\main\\res\\layout\\activity_control.xml"
+    },
+    {
+        "merged": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\layout\\no_bt_layout.xml",
+        "source": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\src\\main\\res\\layout\\no_bt_layout.xml"
+    }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_control.xml",
+        "source": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_control.xml"
+    },
+    {
+        "merged": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_connect.xml",
+        "source": "E:\\Users\\David\\Downloads\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_connect.xml"
+    }
+]
