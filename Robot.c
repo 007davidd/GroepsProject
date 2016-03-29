@@ -26,6 +26,32 @@ float error = 0;
 float lightrr = 0;
 float lightll = 0;
 
+//void turnRight(void)
+//{
+//	int en = nMotorEncoder[MotorLinks] + 350;
+//	nMotorEncoderTarget[MotorLinks] = en;
+//	motor[MotorLinks] = 50;
+//	motor[MotorRechts] = -20;
+//	while(nMotorEncoder[MotorLinks] != en){}
+//}
+
+//void turnLeft(void)
+//{
+//	int en = nMotorEncoder[MotorRechts] + 200;
+//	nMotorEncoderTarget[MotorRechts] = en;
+//	motor[MotorRechts] = 50;
+//	motor[MotorLinks] = -40;
+//	while(nMotorEncoder[MotorRechts] != en){}
+//}
+
+void turnStreat(void)
+{
+	int en = nMotorEncoder[MotorRechts] + 70;
+	nMotorEncoderTarget[MotorRechts] = en;
+	motor[MotorRechts] = Tp;
+	motor[MotorLinks] = Tp;
+	while(nMotorEncoder[MotorRechts] != en){}
+}
 
 float get_offset(void)
 {
@@ -71,9 +97,7 @@ task main()
 
 	if (SensorValue[LichtR] < offset)
 		{
-			motor[MotorLinks] = 0;
-			motor[MotorRechts] = 0;
-			break;
+			turnStreat();
 		}
 	}
 }
