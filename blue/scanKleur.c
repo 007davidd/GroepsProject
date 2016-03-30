@@ -42,7 +42,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 
 							  	 */
 
-							  	 vorigekleur == "Black"; // zet de vorige kleur gelijk aan de huidige kleur
+							  	 vorigekleur = "Black"; // zet de vorige kleur gelijk aan de huidige kleur
 							  }
 								break;
 						case 2:
@@ -52,7 +52,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 							  }
 							  else{
 							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
-							  	 vorigekleur == "Blue"; // zet de vorige kleur gelijk aan de huidige kleur
+							  	 vorigekleur = "Blue"; // zet de vorige kleur gelijk aan de huidige kleur
 							  }
 								break;
 						case 4:
@@ -62,7 +62,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 							  }
 							  else{
 							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
-							  	 vorigekleur == "Green"; // zet de vorige kleur gelijk aan de huidige kleur
+							  	 vorigekleur = "Green"; // zet de vorige kleur gelijk aan de huidige kleur
 							  }
 								break;
 						case 6:
@@ -72,7 +72,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 							  }
 							  else{
 							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
-							  	 vorigekleur == "Yellow"; // zet de vorige kleur gelijk aan de huidige kleur
+							  	 vorigekleur = "Yellow"; // zet de vorige kleur gelijk aan de huidige kleur
 							  }
 								break;
 						case 8:
@@ -82,7 +82,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 							  }
 							  else{
 							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
-							  	 vorigekleur == "Red"; // zet de vorige kleur gelijk aan de huidige kleur
+							  	 vorigekleur = "Red"; // zet de vorige kleur gelijk aan de huidige kleur
 							  }
 								break;
 						case 17:
@@ -92,7 +92,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 							  }
 							  else{
 							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
-							  	 vorigekleur == "White"; // zet de vorige kleur gelijk aan de huidige kleur
+							  	 vorigekleur = "White"; // zet de vorige kleur gelijk aan de huidige kleur
 							  }
 								break;
 						default:
@@ -102,7 +102,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 							  }
 							  else{
 							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
-							  	 vorigekleur == "???"; // zet de vorige kleur gelijk aan de huidige kleur
+							  	 vorigekleur = "???"; // zet de vorige kleur gelijk aan de huidige kleur
 							  }
 								break;
  			}
