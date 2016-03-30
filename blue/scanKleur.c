@@ -9,7 +9,7 @@ int speedR = 0;
 int speedL = 0;
 string vorigekleur = "";
 int array[20];
-int len = 7;
+int len = 20;
 int x=0;
 
 task rij(){
@@ -38,13 +38,13 @@ task leesKleur(){                             //deze task leest de sensor in en 
 				//kleur is zelfde als in geen nieuw blokje gevonden
 			}
 			else{
-				vorigekleur = "Black";																//	hier moet de kleur toegevoegd worden aan de queue
+				vorigekleur = "Black";
+				wait1Msec(500);															//	hier moet de kleur toegevoegd worden aan de queue
 				// zet de vorige kleur gelijk aan de huidige kleur
 			}
 			break;
 
 		case 2:
-		case 3:
 			sColor = "Blue";
 			if(vorigekleur == "Blue"){
 
@@ -52,8 +52,25 @@ task leesKleur(){                             //deze task leest de sensor in en 
 			else{
 				vorigekleur = "Blue";
 				if(x<len){
+					array[x] = 40;
+					x++;
+					wait1Msec(500);
+
+				}
+			}
+			break;
+
+		case 3:
+			sColor = "Green";
+			if(vorigekleur == "Green"){
+
+			}
+			else{
+				vorigekleur = "Green";
+				if(x<len){
 					array[x] = 30;
 					x++;
+					wait1Msec(500);
 
 				}
 			}
@@ -70,6 +87,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 				if(x<len){
 					array[x] = 20;
 					x++;
+					wait1Msec(500);
 				}
 			}
 			break;
@@ -84,10 +102,11 @@ task leesKleur(){                             //deze task leest de sensor in en 
 				if(x<len){
 					array[x] = 10;
 					x++;
+					wait1Msec(500);
 				}
 			}
 			break;
-
+/*
 		case 6:
 			sColor = "White";
 			if(vorigekleur == "White"){
@@ -97,7 +116,7 @@ task leesKleur(){                             //deze task leest de sensor in en 
 				vorigekleur = "White";
 			}
 			break;
-
+*/
 			/*
 			default:
 			sColor = "???";
@@ -119,11 +138,12 @@ task leesKleur(){                             //deze task leest de sensor in en 
 
 task main()
 {
-	startTask(rij);
 	startTask(leesKleur);
+	startTask(rij);
 	while(true){}
 }
 
 //rood is 10
-//blauw is 30
 //geel is 20
+//blauw is 30
+//groen is 40
