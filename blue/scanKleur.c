@@ -6,6 +6,7 @@
 
 int speedR = 0;
 int speedL = 0;
+string vorigekleur = "";
 
 task rij(){
 
@@ -19,8 +20,8 @@ task rij(){
 	}
 }
 
-task leesKleur(){
-	while(true){
+task leesKleur(){                             //deze task leest de sensor in en houd bij wanneer er een verandering in kleur op treed
+	while(true){																// als er een verandering optreed wordt dit bijgehouden
 			//int a = SensorValue[sensorColor];
 			eraseDisplay();
 			//displayBigTextLine(1, "sensorV = %d ", a);
@@ -31,31 +32,78 @@ task leesKleur(){
 
 						case 0:
 								sColor = "Black";
-								playTone(soundBlip);
+								if(vorigekleur == "Black"){
+									//kleur is zelfde als in geen nieuw blokje gevonden
+							  }
+							  else{
+							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
+							  	 /*
+							  	 		hier moet de kleur toegevoegd worden aan de queue
+
+							  	 */
+
+							  	 vorigekleur == "Black"; // zet de vorige kleur gelijk aan de huidige kleur
+							  }
 								break;
 						case 2:
 								sColor = "Blue";
-								playSound(soundBlip);
+								if(vorigekleur == "Blue"){
+									//kleur is zelfde als in geen nieuw blokje gevonden
+							  }
+							  else{
+							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
+							  	 vorigekleur == "Blue"; // zet de vorige kleur gelijk aan de huidige kleur
+							  }
 								break;
 						case 4:
 								sColor = "Green";
-								playSound(soundBlip);
+								if(vorigekleur == "Green"){
+									//kleur is zelfde als in geen nieuw blokje gevonden
+							  }
+							  else{
+							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
+							  	 vorigekleur == "Green"; // zet de vorige kleur gelijk aan de huidige kleur
+							  }
 								break;
 						case 6:
 								sColor = "Yellow";
-								playSound(soundBlip);
+								if(vorigekleur == "Yellow"){
+									//kleur is zelfde als in geen nieuw blokje gevonden
+							  }
+							  else{
+							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
+							  	 vorigekleur == "Yellow"; // zet de vorige kleur gelijk aan de huidige kleur
+							  }
 								break;
 						case 8:
 								sColor = "Red";
-								playSound(soundBlip);
+								if(vorigekleur == "Red"){
+									//kleur is zelfde als in geen nieuw blokje gevonden
+							  }
+							  else{
+							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
+							  	 vorigekleur == "Red"; // zet de vorige kleur gelijk aan de huidige kleur
+							  }
 								break;
 						case 17:
 								sColor = "White";
-								playSound(soundBlip);
+								if(vorigekleur == "White"){
+									//kleur is zelfde als in geen nieuw blokje gevonden
+							  }
+							  else{
+							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
+							  	 vorigekleur == "White"; // zet de vorige kleur gelijk aan de huidige kleur
+							  }
 								break;
 						default:
 								sColor = "???";
-								playSound(soundException);
+								if(vorigekleur == "???"){
+									//kleur is zelfde als in geen nieuw blokje gevonden
+							  }
+							  else{
+							  	 playTone(soundBlip);  //indicatie er is een nieuwe kleur gevonden
+							  	 vorigekleur == "???"; // zet de vorige kleur gelijk aan de huidige kleur
+							  }
 								break;
  			}
 
