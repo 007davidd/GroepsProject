@@ -88,7 +88,7 @@ task rij_auto()
 
 		float speedL = (Tp - turn);
 		float speedR = (Tp + turn);
-		nxtDisplayString(6, "R= %d, L= %d", speedR, speedL);
+		//displayString(6, "R= %d, L= %d", speedR, speedL);
 		motor[MotorLinks] = speedL;
 		motor[MotorRechts] = speedR;
 		perverror = error;
