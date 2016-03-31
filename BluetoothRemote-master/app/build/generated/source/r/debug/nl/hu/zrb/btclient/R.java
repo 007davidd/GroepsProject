@@ -16,25 +16,35 @@ public final class R {
     }
     public static final class drawable {
         public static final int arrow_down_icon=0x7f020000;
-        public static final int arrow_left_icon=0x7f020001;
-        public static final int arrow_right_icon=0x7f020002;
-        public static final int arrow_up_icon=0x7f020003;
-        public static final int computer=0x7f020004;
-        public static final int connect=0x7f020005;
-        public static final int icon=0x7f020006;
-        public static final int phone=0x7f020007;
-        public static final int refresh_icon=0x7f020008;
-        public static final int robot=0x7f020009;
+        public static final int arrow_down_icono=0x7f020001;
+        public static final int arrow_left_icon=0x7f020002;
+        public static final int arrow_left_icono=0x7f020003;
+        public static final int arrow_right_icon=0x7f020004;
+        public static final int arrow_right_icono=0x7f020005;
+        public static final int arrow_up_icon=0x7f020006;
+        public static final int arrow_up_icono=0x7f020007;
+        public static final int computer=0x7f020008;
+        public static final int connect=0x7f020009;
+        public static final int icon=0x7f02000a;
+        public static final int phone=0x7f02000b;
+        public static final int refresh_icon=0x7f02000c;
+        public static final int robot=0x7f02000d;
+        public static final int robotbackground=0x7f02000e;
+        public static final int robotbuttoncenter=0x7f02000f;
+        public static final int robotbuttondown=0x7f020010;
+        public static final int robotbuttonleft=0x7f020011;
+        public static final int robotbuttonright=0x7f020012;
+        public static final int robotbuttonup=0x7f020013;
     }
     public static final class id {
         public static final int button6=0x7f080006;
         public static final int button7=0x7f080007;
         public static final int button8=0x7f080008;
         public static final int connect=0x7f08000c;
-        public static final int imageButtonDown=0x7f080005;
+        public static final int imageButtonDown=0x7f080004;
         public static final int imageButtonFire=0x7f080003;
         public static final int imageButtonLeft=0x7f080002;
-        public static final int imageButtonRight=0x7f080004;
+        public static final int imageButtonRight=0x7f080005;
         public static final int imageButtonUp=0x7f080001;
         public static final int imageView1=0x7f080009;
         public static final int refresh=0x7f08000b;

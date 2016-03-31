@@ -80,6 +80,7 @@ public class ConnectActivity extends ListActivity  {
         int id = item.getItemId();
 
         if (id == R.id.refresh && btadapter != null){
+            adapter.clear();
             onContentChanged();
             boolean succes = btadapter.startDiscovery();
             if(succes)

@@ -1,18 +1,10 @@
 [
     {
-        "merged": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_control.xml",
-        "source": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_control.xml"
+        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_connect.xml",
+        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_connect.xml"
     },
     {
-        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_connect.xml",
-        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_connect.xml"
-    },
-    {
-        "merged": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_connect.xml",
-        "source": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_connect.xml"
-    },
-    {
-        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_control.xml",
-        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_control.xml"
+        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menu_control.xml",
+        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_control.xml"
     }
 ]
