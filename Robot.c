@@ -1,4 +1,4 @@
-#pragma config(Sensor, S1,     Bumper,         sensorNone)
+#pragma config(Sensor, S1,     sensorColor,    sensorColorNxtFULL)
 #pragma config(Sensor, S2,     Sonar,          sensorSONAR)
 #pragma config(Sensor, S3,     LichtR,         sensorLightActive)
 #pragma config(Sensor, S4,     LichtL,         sensorLightActive)
@@ -10,6 +10,7 @@
 //protoype van functies en tasks.
 float get_offset(void);
 task rij_auto();
+task scancode();
 task sonar();
 
 
@@ -25,38 +26,45 @@ float integral = 0; // corriectiewaarde die aan de error word toegevoegd om te c
 float perverror = 0; //hierin word de error opgeslagen uit de vorrige scanloop om de derivative mee te berekenen.
 float derivative = 0; //correctiewaarde die aan de error word toegevoegd om te "voorspellen" wat te volgende error gaat worden en hier zo goed mogelijk rekening mee te houden.
 float error = 0;
+int triggerScan = 0;
+int telzwart = 0;
+int pos = 0;
 float sonarval = 30;
 bool auto = false;
-//float lightrr = 0; //debug varriable voor het checken van lichtsensoren tijdens de rit
-//float lightll = 0; //debug varriable voor het checken van lichtsensoren tijdens de rit
+
+//int array[20];			//debug varriable voor het checken van colorsensoren
+//int x = -1;					//
+//int len = 20;				//-
+//float lightrr = 0; 	//debug varriable voor het checken van lichtsensoren tijdens de rit
+//float lightll = 0; 	//debug varriable voor het checken van lichtsensoren tijdens de rit
 
 // Kruispunt functies
-//void turnRight(void)
-//{
-//	int en = nMotorEncoder[MotorLinks] + 350;
-//	nMotorEncoderTarget[MotorLinks] = en;
-//	motor[MotorLinks] = 50;
-//	motor[MotorRechts] = -20;
-//	while(nMotorEncoder[MotorLinks] != en){}
-//}
+void turnRight(void)
+{
+	int en = nMotorEncoder[MotorLinks] + 350;
+	nMotorEncoderTarget[MotorLinks] = en;
+	motor[MotorLinks] = 50;
+	motor[MotorRechts] = -20;
+	while(nMotorEncoder[MotorLinks] != en){}
+}
 
-//void turnLeft(void)
-//{
-//	int en = nMotorEncoder[MotorRechts] + 200;
-//	nMotorEncoderTarget[MotorRechts] = en;
-//	motor[MotorRechts] = 50;
-//	motor[MotorLinks] = -40;
-//	while(nMotorEncoder[MotorRechts] != en){}
-//}
+void turnLeft(void)
+{
+	int en = nMotorEncoder[MotorRechts] + 200;
+	nMotorEncoderTarget[MotorRechts] = en;
+	motor[MotorRechts] = 50;
+	motor[MotorLinks] = -40;
+	while(nMotorEncoder[MotorRechts] != en){}
+}
 
-//void turnStreat(void)
-//{
-//	int en = nMotorEncoder[MotorRechts] + 70;
-//	nMotorEncoderTarget[MotorRechts] = en;
-//	motor[MotorRechts] = Tp;
-//	motor[MotorLinks] = Tp;
-//	while(nMotorEncoder[MotorRechts] != en){}
-//}
+void turnStreat(void)
+{
+	int en = nMotorEncoder[MotorRechts] + 70;
+	nMotorEncoderTarget[MotorRechts] = en;
+	motor[MotorRechts] = Tp;
+	motor[MotorLinks] = Tp;
+	while(nMotorEncoder[MotorRechts] != en){}
+}
 
 
 float get_offset(void)
@@ -73,6 +81,7 @@ float get_offset(void)
 task rij_auto()
 {
 	startTask(sonar);
+	startTask(scancode);
 	while(true)
 	{
 		float Grayscale = SensorValue[LichtL];
@@ -95,10 +104,58 @@ task rij_auto()
 		//lightrr = SensorValue[LichtL]; //debug
 		//lightll = SensorValue[LichtR]; //debug
 
-		/*if (SensorValue[LichtR] < offset)
+		if (SensorValue[LichtR] < offset && pos > 0)
 		{
-		turnStreat();
-		}*/
+			switch(pos){
+			case 2:
+				turnStreat();
+				break;
+			case 3:
+				turnRight();
+				break;
+			case 4:
+				turnLeft();
+				break;
+			}
+			pos = 0;
+		}
+	}
+}
+
+
+task scancode(){                           							 //deze task leest de sensor in en houd bij wanneer er een verandering in kleur op treed
+	int Kleur = 0;
+	while(true){																						 // als er een verandering optreed wordt dit bijgehouden
+
+		Kleur= SensorValue[sensorColor];
+		switch(Kleur){
+		case 0:
+		case 1: //black
+			if(triggerScan == 1){
+				telzwart = telzwart +1;
+
+			}
+			break;
+
+		case 5:	//red
+			if(triggerScan == 0){
+				triggerScan = 1;
+			}
+			else{
+				triggerScan = 0;
+				displayString(4, "%d", telzwart);
+				pos = telzwart;
+				//array[x] = telzwart;
+				//if(x < len){
+				//	x++;
+				//}
+				telzwart =0;
+			}
+			break;
+		}
+		while(SensorValue[sensorColor] == Kleur){
+			wait1Msec(20);
+		}
 	}
 }
 
@@ -133,41 +190,49 @@ task main()
 			cCmdMessageRead(btmessage, a, mailbox); // lees aantal bytes a in en plaats ze in btmessage
 
 			if(btmessage == "A")
-				{
+			{
 				auto = true;
 				startTask(rij_auto);
-				}
-				else if(btmessage == "B")
-				{
+			}
+			else if(btmessage == "B")
+			{
 				auto = false;
 				stopTask(rij_auto);
 				motor[MotorRechts]=0;
 				motor[MotorLinks]=0;
-				}
-				else if(!auto)
-				{
+			}
+			else if(btmessage == "C")
+			{
+				auto = false;
+				stopTask(rij_auto);
+				motor[MotorRechts]=0;
+				motor[MotorLinks]=0;
+				offset = get_offset();
+			}
+			else if(!auto)
+			{
 				if(btmessage == "UP")
-					{
+				{
 					motor[MotorRechts]=100;
 					motor[MotorLinks]=100;
-					}
-					else if(btmessage == "DOWN")
-					{
+				}
+				else if(btmessage == "DOWN")
+				{
 					motor[MotorRechts]=-100;
 					motor[MotorLinks]=-100;
-					}
-					else if(btmessage == "LEFT")
-					{
-					motor[MotorRechts]=-100;
-					motor[MotorLinks]=100;
-					}
-					else if(btmessage == "RIGHT")
-					{
+				}
+				else if(btmessage == "LEFT")
+				{
 					motor[MotorRechts]=100;
 					motor[MotorLinks]=-100;
-					}
-					else if(btmessage == "NULL")
-					{
+				}
+				else if(btmessage == "RIGHT")
+				{
+					motor[MotorRechts]=-100;
+					motor[MotorLinks]=100;
+				}
+				else if(btmessage == "NULL")
+				{
 					motor[MotorRechts]=0;
 					motor[MotorLinks]=0;
 				}
