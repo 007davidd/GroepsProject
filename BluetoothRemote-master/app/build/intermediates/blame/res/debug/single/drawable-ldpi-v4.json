@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-ldpi\\icon.png"
+    },
+    {
         "merged": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon.png",
         "source": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-ldpi\\icon.png"
     }
