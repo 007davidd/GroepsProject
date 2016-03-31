@@ -11,7 +11,9 @@ int speedL = 0;
 int triggerScan = 0;
 int telzwart =0;
 int Kleur = 0;
-
+int array[20];
+int x = -1;
+int len = 20;
 task rij(){
 
 	wait1Msec(100);
@@ -209,6 +211,7 @@ task Scancode(){                           							 //deze task leest de sensor i
 		case 1:
 				 if(triggerScan == 1){
 		     telzwart = telzwart +1;
+
 		   }
 				break;
 
@@ -216,9 +219,14 @@ task Scancode(){                           							 //deze task leest de sensor i
 			sColor = "Red";
 			if(triggerScan == 0){
 					triggerScan = 1;
+					if(x < len){
+							x++;
+						}
 				}
 			else{
 				triggerScan = 0;
+				array[x] = telzwart;
+				telzwart =0;
 		  }
 			break;
 
@@ -237,7 +245,7 @@ task Scancode(){                           							 //deze task leest de sensor i
 
 task main()
 {
-  //startTask(rij);
+  startTask(rij);
   startTask(Scancode);
   while(true){}
 }
