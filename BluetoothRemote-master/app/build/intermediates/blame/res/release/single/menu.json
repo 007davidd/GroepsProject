@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\release\\menu\\menu_control.xml",
+        "source": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_control.xml"
+    },
+    {
+        "merged": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\release\\menu\\menu_connect.xml",
+        "source": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\menu\\menu_connect.xml"
+    }
+]
