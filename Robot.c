@@ -1,7 +1,7 @@
-#pragma config(Sensor, S1,     sensorColor,    sensorColorNxtFULL)
-#pragma config(Sensor, S2,     Sonar,          sensorSONAR)
-#pragma config(Sensor, S3,     LichtR,         sensorLightActive)
-#pragma config(Sensor, S4,     LichtL,         sensorLightActive)
+#pragma config(Sensor, S1,     Sonar,          sensorSONAR)
+#pragma config(Sensor, S2,     LichtR,         sensorLightActive)
+#pragma config(Sensor, S3,     LichtL,         sensorLightActive)
+#pragma config(Sensor, S4,     sensorColor,    sensorColorNxtFULL)
 #pragma config(Motor,  motorA,          MotorLinks,    tmotorNXT, PIDControl, encoder)
 #pragma config(Motor,  motorB,          Head,          tmotorNXT, openLoop)
 #pragma config(Motor,  motorC,          MotorRechts,   tmotorNXT, PIDControl)
@@ -9,6 +9,10 @@
 
 //protoype van functies en tasks.
 float get_offset(void);
+void turnStreat(void);
+void turnLeft(void);
+void turnRight(void);
+void stop_rij_auto(void);
 task rij_auto();
 task scancode();
 task sonar();
@@ -29,7 +33,6 @@ float error = 0;
 int triggerScan = 0;
 int telzwart = 0;
 int pos = 0;
-float sonarval = 30;
 bool auto = false;
 
 //int array[20];			//debug varriable voor het checken van colorsensoren
@@ -41,52 +44,86 @@ bool auto = false;
 // Kruispunt functies
 void turnRight(void)
 {
-	int en = nMotorEncoder[MotorLinks] + 350;
-	nMotorEncoderTarget[MotorLinks] = en;
-	motor[MotorLinks] = 50;
-	motor[MotorRechts] = -20;
-	while(nMotorEncoder[MotorLinks] != en){}
-}
+	motor[MotorRechts] = 0;
+	motor[MotorLinks] = 0;
 
-void turnLeft(void)
-{
-	nMotorEncoderTarget[Head] = 90;
+	nMotorEncoderTarget[Head] = 100;
+	motor[Head] = 50;
+	wait1Msec(2000);
+
+	nMotorEncoderTarget[Head] = 100;
 	motor[Head] = -50;
-	wait1Msec(500);
-
-	if(SensorValue[Sonar] > 30)
+	if(SensorValue[Sonar] > 33)
 	{
-		int en = nMotorEncoder[MotorRechts] + 200;
+		int en = nMotorEncoder[MotorRechts] + 250;
 		nMotorEncoderTarget[MotorRechts] = en;
-		motor[MotorRechts] = 50;
-		motor[MotorLinks] = -40;
+		motor[MotorRechts] = -20;
+		motor[MotorLinks] = 50;
 		while(nMotorEncoder[MotorRechts] != en){}
 	}
 	else
 	{
-		displayString(4,"lidk");
+		turnStreat();
+	}
+}
+
+void turnLeft(void)
+{
+	motor[MotorRechts] = 0;
+	motor[MotorLinks] = 0;
+
+	nMotorEncoderTarget[Head] = 100;
+	motor[Head] = -50;
+	wait1Msec(2000);
+
+	nMotorEncoderTarget[Head] = 100;
+	motor[Head] = 50;
+	if(SensorValue[Sonar] > 33)
+	{
+		int en = nMotorEncoder[MotorRechts] + 300;
+		nMotorEncoderTarget[MotorRechts] = en;
+		motor[MotorRechts] = 50;
+		motor[MotorLinks] = -20;
+		while(nMotorEncoder[MotorRechts] != en){}
+	}
+	else
+	{
+		turnStreat();
 	}
 }
 
 void turnStreat(void)
 {
-	int en = nMotorEncoder[MotorRechts] + 70;
-	nMotorEncoderTarget[MotorRechts] = en;
-	motor[MotorRechts] = Tp;
-	motor[MotorLinks] = Tp;
-	while(nMotorEncoder[MotorRechts] != en){}
+	if(SensorValue[Sonar] > 33)
+	{
+		int en = nMotorEncoder[MotorRechts] + 70;
+		nMotorEncoderTarget[MotorRechts] = en;
+		motor[MotorRechts] = Tp;
+		motor[MotorLinks] = Tp;
+		while(nMotorEncoder[MotorRechts] != en){}
+	}
 }
 
 
 float get_offset(void)
 {
-	playSound(soundBeepBeep);
-	wait10Msec(500);
+	//playSound(soundBeepBeep);
+	//wait10Msec(500);
 	max_light = SensorValue[LichtR];
 	min_light = SensorValue[LichtL];
 	playSound(soundBeepBeep);
 	float offset = ((max_light + min_light) / 2) + 2;
 	return offset;
+}
+
+void stop_rij_auto(void){
+	stopTask(sonar);
+	stopTask(scancode);
+	stopTask(rij_auto);
+	integral = perverror = derivative = error = triggerScan = pos = telzwart = 0;
+	auto = false;
+	motor[MotorRechts]=0;
+	motor[MotorLinks]=0;
 }
 
 task rij_auto()
@@ -174,14 +211,9 @@ task sonar()
 {
 	while (true)
 	{
-		sonarval = SensorValue[Sonar];
-
-		if (sonarval <= 30)
+		if (SensorValue[Sonar] <= 30)
 		{
-			stopTask(rij_auto);
-			motor[MotorRechts]=0;
-			motor[MotorLinks]=0;
-			auto = false;
+			stop_rij_auto();
 			break;
 		}
 	}
@@ -192,8 +224,6 @@ task main()
 	int mailbox = 5;
 	string btmessage="";
 	nMotorEncoder[Head] = 0;
-
-	while(nMotorEncoder[Head] < 20){}
 
 	while(true)
 	{
@@ -210,17 +240,11 @@ task main()
 			}
 			else if(btmessage == "MANUAL")
 			{
-				auto = false;
-				stopTask(rij_auto);
-				motor[MotorRechts]=0;
-				motor[MotorLinks]=0;
+				stop_rij_auto();
 			}
 			else if(btmessage == "CALIBRATE")
 			{
-				auto = false;
-				stopTask(rij_auto);
-				motor[MotorRechts]=0;
-				motor[MotorLinks]=0;
+				stop_rij_auto();
 				offset = get_offset();
 			}
 			else if(!auto)
