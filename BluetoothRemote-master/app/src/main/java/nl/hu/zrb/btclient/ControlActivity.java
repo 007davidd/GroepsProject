@@ -212,17 +212,12 @@ public class ControlActivity extends Activity {
     };
 
 
-    public void onUp(View v) {
-        messageQueue.voegToe("UP");
-    }
-
-
     public void onAuto(View v) {
         if (auto) {
-            messageQueue.voegToe("AUTO");
+            messageQueue.voegToe("MANUAL");
             auto = false;
         } else {
-            messageQueue.voegToe("MANUAL");
+            messageQueue.voegToe("AUTO");
             auto = true;
         }
     }

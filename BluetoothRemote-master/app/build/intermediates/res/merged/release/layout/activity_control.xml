@@ -68,11 +68,11 @@
             android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:onClick="onA"
+            android:onClick="onAuto"
             android:text="Auto"
-            android:textSize="90px" />
+            android:textSize="90px"
+            android:layout_below="@+id/button7"
+            android:layout_centerHorizontal="true" />
         <!--android:layout_alignStart="@+id/imageButtonUp"-->
 
 
@@ -80,11 +80,11 @@
             android:id="@+id/button7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/button6"
-            android:layout_centerHorizontal="true"
             android:onClick="onB"
             android:text="Route"
-            android:textSize="90px" />
+            android:textSize="90px"
+            android:layout_below="@+id/button8"
+            android:layout_centerHorizontal="true" />
 
         <!--android:layout_toStartOf="@+id/button6" android:layout_centerHorizontal="@+id/button6"/>-->
 
@@ -93,11 +93,11 @@
             android:id="@+id/button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/button7"
-            android:layout_centerHorizontal="true"
-            android:onClick="onC"
+            android:onClick="onCalibrate"
             android:text="Calibrate"
-            android:textSize="90px" />
+            android:textSize="90px"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
         <!--android:layout_alignStart="@+id/button7"android:layout_centerHorizontal="@+id/button7"-->
 
     </RelativeLayout>
