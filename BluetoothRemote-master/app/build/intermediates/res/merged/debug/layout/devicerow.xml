@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="10dip"
         android:layout_gravity="right"
-        android:src="@drawable/robologog" />
+        android:src="@drawable/icon" />
 
     <TextView
         android:id="@+id/textView1"

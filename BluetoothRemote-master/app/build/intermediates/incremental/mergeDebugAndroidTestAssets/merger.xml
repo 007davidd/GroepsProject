@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<merger version="3"><dataSet config="main"><source path="C:\Users\Tarik\Documents\GroepsProject\BluetoothRemote-master\app\src\androidTest\assets"/></dataSet></merger>
-=======
 <merger version="3"><dataSet config="main"><source path="D:\Git\GroepsProject\BluetoothRemote-master\app\src\androidTest\assets"/></dataSet></merger>
->>>>>>> c0d5fafb52cc36456c068def9a33a9f1232cd152
