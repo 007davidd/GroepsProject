@@ -1,82 +1,86 @@
 [
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_up_icono.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_up_icono.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_right_icon.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_right_icon.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robot.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robot.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_down_icon.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_down_icon.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\refresh_icon.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\refresh_icon.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttoncenter.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttoncenter.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttondown.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttondown.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_down_icono.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_down_icono.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_up_icon.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_up_icon.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttonleft.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttonleft.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttonleft.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttonleft.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\refresh_icon.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\refresh_icon.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_right_icon.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_right_icon.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_left_icono.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_left_icono.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttonup.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttonup.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttonright.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttonright.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\icon.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\phone.gif",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\phone.gif"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_left_icono.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_left_icono.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robologog.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robologog.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\phone.gif",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\phone.gif"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robot.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robot.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_down_icono.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_down_icono.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\icon.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttonright.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttonright.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_up_icono.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_up_icono.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_down_icon.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_down_icon.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbackground.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbackground.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbackground.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbackground.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttondown.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttondown.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_right_icono.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_right_icono.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_right_icono.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_right_icono.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttoncenter.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttoncenter.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\connect.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\connect.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\connect.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\connect.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_left_icon.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_left_icon.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\computer.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\computer.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\robotbuttonup.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\robotbuttonup.png"
     },
     {
-        "merged": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_left_icon.png",
-        "source": "E:\\Users\\David\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_left_icon.png"
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\computer.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\computer.png"
+    },
+    {
+        "merged": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\arrow_up_icon.png",
+        "source": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\drawable-mdpi\\arrow_up_icon.png"
     }
 ]

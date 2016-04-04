@@ -28,13 +28,14 @@ public final class R {
         public static final int icon=0x7f02000a;
         public static final int phone=0x7f02000b;
         public static final int refresh_icon=0x7f02000c;
-        public static final int robot=0x7f02000d;
-        public static final int robotbackground=0x7f02000e;
-        public static final int robotbuttoncenter=0x7f02000f;
-        public static final int robotbuttondown=0x7f020010;
-        public static final int robotbuttonleft=0x7f020011;
-        public static final int robotbuttonright=0x7f020012;
-        public static final int robotbuttonup=0x7f020013;
+        public static final int robologog=0x7f02000d;
+        public static final int robot=0x7f02000e;
+        public static final int robotbackground=0x7f02000f;
+        public static final int robotbuttoncenter=0x7f020010;
+        public static final int robotbuttondown=0x7f020011;
+        public static final int robotbuttonleft=0x7f020012;
+        public static final int robotbuttonright=0x7f020013;
+        public static final int robotbuttonup=0x7f020014;
     }
     public static final class id {
         public static final int button6=0x7f080006;
