@@ -152,7 +152,7 @@ task rij_auto()
 		//lightrr = SensorValue[LichtL]; //debug
 		//lightll = SensorValue[LichtR]; //debug
 
-		if (SensorValue[LichtR] < offset && pos > 0)
+		if (SensorValue[LichtR] < offset)
 		{
 			switch(pos){
 			case 2:
@@ -163,6 +163,9 @@ task rij_auto()
 				break;
 			case 4:
 				turnRight();
+				break;
+			default:
+				turnStreat();
 				break;
 			}
 			pos = 0;
