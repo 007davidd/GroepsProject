@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
         "outputFile": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+=======
+        "outputFile": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
+>>>>>>> c0d5fafb52cc36456c068def9a33a9f1232cd152
         "map": [
             {
                 "to": {
@@ -11,7 +15,11 @@
                     "endOffset": 108
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\dimens.xml",
+=======
+                    "file": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\dimens.xml",
+>>>>>>> c0d5fafb52cc36456c068def9a33a9f1232cd152
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +38,11 @@
                     "endOffset": 164
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\dimens.xml",
+=======
+                    "file": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\dimens.xml",
+>>>>>>> c0d5fafb52cc36456c068def9a33a9f1232cd152
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,13 +61,17 @@
                     "endOffset": 217
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\strings.xml",
+=======
+                    "file": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\strings.xml",
+>>>>>>> c0d5fafb52cc36456c068def9a33a9f1232cd152
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 179,
+                        "startOffset": 176,
                         "endColumn": 52,
-                        "endOffset": 227
+                        "endOffset": 224
                     }
                 }
             },
@@ -64,17 +80,21 @@
                     "startLine": 5,
                     "startColumn": 4,
                     "startOffset": 222,
-                    "endColumn": 52,
-                    "endOffset": 270
+                    "endColumn": 49,
+                    "endOffset": 267
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\strings.xml",
+=======
+                    "file": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\strings.xml",
+>>>>>>> c0d5fafb52cc36456c068def9a33a9f1232cd152
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
                         "startOffset": 57,
-                        "endColumn": 52,
-                        "endOffset": 105
+                        "endColumn": 49,
+                        "endOffset": 102
                     }
                 }
             },
@@ -82,18 +102,22 @@
                 "to": {
                     "startLine": 6,
                     "startColumn": 4,
-                    "startOffset": 275,
+                    "startOffset": 272,
                     "endColumn": 66,
-                    "endOffset": 337
+                    "endOffset": 334
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\strings.xml",
+=======
+                    "file": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\strings.xml",
+>>>>>>> c0d5fafb52cc36456c068def9a33a9f1232cd152
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 111,
+                        "startOffset": 108,
                         "endColumn": 66,
-                        "endOffset": 173
+                        "endOffset": 170
                     }
                 }
             },
@@ -101,13 +125,17 @@
                 "to": {
                     "startLine": 7,
                     "startColumn": 4,
-                    "startOffset": 342,
+                    "startOffset": 339,
                     "endLine": 9,
                     "endColumn": 12,
-                    "endOffset": 459
+                    "endOffset": 456
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "C:\\Users\\Tarik\\Documents\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\styles.xml",
+=======
+                    "file": "D:\\Git\\GroepsProject\\BluetoothRemote-master\\app\\src\\main\\res\\values\\styles.xml",
+>>>>>>> c0d5fafb52cc36456c068def9a33a9f1232cd152
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,

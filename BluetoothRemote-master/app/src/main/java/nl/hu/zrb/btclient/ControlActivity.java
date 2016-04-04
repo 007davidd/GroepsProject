@@ -29,6 +29,7 @@ public class ControlActivity extends Activity {
     ThreadThatSendsCommandsByBT t;
     MenuItem connectItem;
     RobotConnection myRobot = new RobotConnection();
+    boolean auto = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,21 +212,22 @@ public class ControlActivity extends Activity {
     };
 
 
-    public void onUp(View v) {
-        messageQueue.voegToe("UP");
-    }
-
-
-    public void onA(View v) {
-        messageQueue.voegToe("A");
+    public void onAuto(View v) {
+        if (auto) {
+            messageQueue.voegToe("MANUAL");
+            auto = false;
+        } else {
+            messageQueue.voegToe("AUTO");
+            auto = true;
+        }
     }
 
     public void onB(View v) {
         messageQueue.voegToe("B");
     }
 
-    public void onC(View v) {
-        messageQueue.voegToe("C");
+    public void onCalibrate(View v) {
+        messageQueue.voegToe("CALIBRATE");
     }
 
 
