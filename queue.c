@@ -1,27 +1,27 @@
 #include "queue.h"
 
-void init_queue(Queue *pq) {
-	/*pq = NULL;
-	pq = malloc(sizeof(Queue));*/
-
-	for (int i = 0; i < QUEUESIZE; ++i) {
-		pq->a[i] = 0;
-	}
+void init_queue(Queue* pq)
+{
 	pq->head = 0;
-	pq->tail = 0;
-
+	pq->tail = -1;
 }
 
-void enqueue(Queue *pq, int data) {
-
-	pq->tail++;
-	pq->a[pq->tail] = data;
-
+void enqueue(Queue* pq, int data)
+{
+	if (pq->tail < (QUEUESIZE -1))
+	{
+		(pq->tail)++;
+		pq->a[pq->tail] = data;
+	}
 }
 
-int dequeue(Queue *pq) {
-	int r = pq->a[pq->head];
-	pq->a[pq->head] = 0;
-	pq->head++;
-	return r;
+int dequeue(Queue* pq)
+{
+	int data = 0;
+	if (pq->head <= pq->tail)
+	{
+		data = pq->a[pq->head];
+		(pq->head)++;
+	}
+	return data;
 }

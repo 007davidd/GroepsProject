@@ -14,14 +14,15 @@ float get_offset(void);
 void turnStreat(void);
 void turnLeft(void);
 void turnRight(void);
-void stop_rij_auto(void);
+task stop_rij_auto();
 task rij_auto();
 task scancode();
+task sound();
 task sonar();
 
 
 // Globale variable
-//float test = 0;
+float test = 0;
 Queue q;
 float turn = 0;
 int max_light = 0;
@@ -58,17 +59,11 @@ void turnRight(void)
 
 	nMotorEncoderTarget[Head] = 100;
 	motor[Head] = -50;
-	if(SensorValue[Sonar] > 33)
-	{
-		nMotorEncoder[MotorLinks] = 0;
-		motor[MotorRechts] = -20;
-		motor[MotorLinks] = 50;
-		while(nMotorEncoder[MotorLinks] < 270){}
-	}
-	else
-	{
-		stop_rij_auto();
-	}
+
+	nMotorEncoder[MotorLinks] = 0;
+	motor[MotorRechts] = -20;
+	motor[MotorLinks] = 50;
+	while(nMotorEncoder[MotorLinks] < 270){}
 }
 
 void turnLeft(void)
@@ -82,30 +77,22 @@ void turnLeft(void)
 
 	nMotorEncoderTarget[Head] = 100;
 	motor[Head] = 50;
-	if(SensorValue[Sonar] > 33)
-	{
-		motor[MotorRechts] = 40;
-		motor[MotorLinks] = -10;
-		while(SensorValue[LichtL] < offset);
-	}
-	else
-	{
-		stop_rij_auto();
-	}
+	motor[MotorRechts] = 40;
+	motor[MotorLinks] = -10;
+	while(SensorValue[LichtL] < offset){}
 }
 
 void turnStreat(void)
 {
 	motor[MotorRechts] = Tp;
 	motor[MotorLinks] = Tp;
-	while(SensorValue[LichtL] < offset);
+	while(SensorValue[LichtL] < offset){}
 }
 
 
 float get_offset(void)
 {
-	//playSound(soundBeepBeep);
-	//wait10Msec(500);
+	//kalibreer
 	max_light = SensorValue[LichtL];
 	min_light = SensorValue[LichtR];
 	playSound(soundBeepBeep);
@@ -113,18 +100,25 @@ float get_offset(void)
 	return offset;
 }
 
-void stop_rij_auto(void){
+task stop_rij_auto(){
 	stopTask(sonar);
+	stopTask(sound);
 	stopTask(scancode);
 	stopTask(rij_auto);
+	init_queue(&q);
 	integral = perverror = derivative = error = triggerScan = pos = telzwart = 0;
-	auto = false;
 	motor[MotorRechts]=0;
 	motor[MotorLinks]=0;
+	auto = false;
+	wait10Msec(200);
+	motor[Head] = -nMotorEncoder[Head] / 4;
+	while(nMotorEncoder[Head] != 0){}
+	motor[Head] = 0;
 }
 
 task rij_auto()
 {
+	startTask(sound);
 	startTask(sonar);
 	startTask(scancode);
 	wait10Msec(10);
@@ -181,7 +175,9 @@ task rij_auto()
 				turnRight();
 				break;
 			default:
-				stop_rij_auto();
+				motor[MotorRechts]=0;
+				motor[MotorLinks]=0;
+				startTask(stop_rij_auto);
 				break;
 			}
 		}
@@ -223,7 +219,7 @@ task scancode()
 				telzwart =0;
 			}
 		}
-		while(SensorValue[sensorColor] == Kleur);
+		while(SensorValue[sensorColor] == Kleur){}
 		wait1Msec(20);
 	}
 }
@@ -243,8 +239,54 @@ task sonar()
 		//}
 		if (SensorValue[Sonar] <= 30)
 		{
-			stop_rij_auto();
+			startTask(stop_rij_auto);
 		}
+	}
+}
+
+task sound(){
+	//star wars geluitje
+	while(true){
+		playTone(695, 14); while(bSoundActive){}
+		playTone(695, 14); while(bSoundActive){}
+		playTone(695, 14); while(bSoundActive){}
+		playTone(929, 83); while(bSoundActive){}
+		playTone(1401, 83); while(bSoundActive){}
+		playTone(1251, 14); while(bSoundActive){}
+		playTone(1188, 14); while(bSoundActive){}
+		playTone(1054, 14); while(bSoundActive){}
+		playTone(1841, 83); while(bSoundActive){}
+		playTone(1401, 41); while(bSoundActive){}
+		playTone(1251, 14); while(bSoundActive){}
+		playTone(1188, 14); while(bSoundActive){}
+		playTone(1054, 14); while(bSoundActive){}
+		playTone(1841, 83); while(bSoundActive){}
+		playTone(1401, 41); while(bSoundActive){}
+		playTone(1251, 14); while(bSoundActive){}
+		playTone(1188, 14); while(bSoundActive){}
+		playTone(1251, 14); while(bSoundActive){}
+		playTone(1054, 55); while(bSoundActive){}
+		wait1Msec(280);
+		playTone(695, 14); while(bSoundActive){}
+		playTone(695, 14); while(bSoundActive){}
+		playTone(695, 14); while(bSoundActive){}
+		playTone(929, 83); while(bSoundActive){}
+		playTone(1401, 83); while(bSoundActive){}
+		playTone(1251, 14); while(bSoundActive){}
+		playTone(1188, 14); while(bSoundActive){}
+		playTone(1054, 14); while(bSoundActive){}
+		playTone(1841, 83); while(bSoundActive){}
+		playTone(1401, 41); while(bSoundActive){}
+		playTone(1251, 14); while(bSoundActive){}
+		playTone(1188, 14); while(bSoundActive){}
+		playTone(1054, 14); while(bSoundActive){}
+		playTone(1841, 83); while(bSoundActive){}
+		playTone(1401, 41); while(bSoundActive){}
+		playTone(1251, 14); while(bSoundActive){}
+		playTone(1188, 14); while(bSoundActive){}
+		playTone(1251, 14); while(bSoundActive){}
+		playTone(1054, 55); while(bSoundActive){}
+		wait1Msec(280);
 	}
 }
 
@@ -257,6 +299,7 @@ task main()
 
 	while(true)
 	{
+		test = nMotorEncoder[Head];
 		// lees mailbox
 		int a = cCmdMessageGetSize(mailbox);  //haal de hoeveel bytes in eerst volgende bericht
 		if(a > 0)
@@ -270,11 +313,11 @@ task main()
 			}
 			else if(btmessage == "MANUAL")
 			{
-				stop_rij_auto();
+				startTask(stop_rij_auto);
 			}
 			else if(btmessage == "CALIBRATE")
 			{
-				stop_rij_auto();
+				startTask(stop_rij_auto);
 				offset = get_offset();
 			}
 			else if(!auto)
