@@ -6,7 +6,7 @@
 #pragma config(Motor,  motorB,           ,             tmotorNXT, openLoop)
 #pragma config(Motor,  motorC,          MotorRechts,   tmotorNXT, PIDControl)
 
-void start(void);
+
 void Circle (int Lspeed, float Omtrek);
 
 int count = 0;                                      //bebug
@@ -41,7 +41,7 @@ task circle()
 
 }
 
-void start(void)
+task start()
 {
 	stopTask(circle);
 	startTask(rij);																//test functie stopcirkel start // auto
@@ -63,7 +63,7 @@ void Circle(int Lspeed, float Omtrek)
 			motor[MotorLinks] = 0;
 			   //stopTask(circle);
 				//startTask(rij)
-			start();
+			startTask(start);
 		}
 	}
 }
