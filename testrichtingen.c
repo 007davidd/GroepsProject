@@ -18,61 +18,64 @@ int forwardSpeed = 20;
 int backwardSpeed = -20;
 int speed = 40;
 
-int max_light = 80;
-int min_light = 50;
+int max_light = 80;   //80
+int min_light = 255;   //50
 
 
 
 
 task zoek() {
+	while(true){
 			//if(SensorValue[LichtL] > max_light && SensorValue[LichtR] > max_light ){   //beiden sensors zien wit
 		 	//stopTask(rij);                                                          // de lijnvolg rij functie wordt gestopt
-			turnBack();
-			turnStreat();
-			turnLeft90();
-			turnStreat();
-			turnBack();
-			turnRight90();                 // check zuid west oostelijke richtingen om de lijn te vinden
-			turnRight90();
-			turnStreat();
-			turnBack();
-			turnLeft90();
 
-			turnLeft90();
-			turnLeft45();
-			turnStreat();
-			turnBack();
-			turnRight90();
-			turnStreat();
-			turnBack();
-			turnRight90();
-			turnStreat();
-			turnBack();
-			turnRight90();
-			turnStreat();
-			turnBack();
-			turnLeft90();
-			turnLeft45();
 
+			//turnBack();
+			turnStreat();
+			turnLeft90();
+			turnStreat();
+			//turnBack();
+			//turnRight90();                 // check zuid west oostelijke richtingen om de lijn te vinden
+			//turnRight90();
+			//turnStreat();
+			//turnBack();
+			//turnLeft90();
+
+			//turnLeft90();
+			//turnLeft45();
+			//turnStreat();
+			//turnBack();
+			//turnRight90();
+			//turnStreat();
+			//turnBack();
+			//turnRight90();
+			//turnStreat();
+			//turnBack();
+			//turnRight90();
+			//turnStreat();
+			//turnBack();
+			//turnLeft90();
+			//turnLeft45();
+		 }
 		}
 
 
-task rij(){
-	while(true){
-		int en = nMotorEncoder[MotorRechts] + 70;
-		nMotorEncoderTarget[MotorRechts] = en;
-		motor[MotorRechts] = speed;												//rij met een speed van 40 rechtdoor
-		motor[MotorLinks] = speed;
-		while(nMotorEncoder[MotorRechts] != en){
-				if(SensorValue[LichtL] > max_light && SensorValue[LichtR] > max_light){     // lijn is kwijtgeraakt er wordt veel wit gezien
-					playSound(soundBeepBeep);
-					stopTask(rij);
-					startTask(zoek);
-  	}
+//task rij(){
+//	while(true){
+//		int en = nMotorEncoder[MotorRechts] + 70;
+//		nMotorEncoderTarget[MotorRechts] = en;
+//		motor[MotorRechts] = speed;												//rij met een speed van 40 rechtdoor
+//		motor[MotorLinks] = speed;
+//		while(nMotorEncoder[MotorRechts] != en){
+//				if(SensorValue[LichtL] > max_light && SensorValue[LichtR] > max_light){     // lijn is kwijtgeraakt er wordt veel wit gezien
+//					playSound(soundBeepBeep);
+//					stopTask(rij);
+//					startTask(zoek);
+//  	}
 
-	}
- }
-}
+//	}
+// }
+//}
 
 //void turnRight45(void)                             //45 graden bocht
 //{
@@ -94,56 +97,56 @@ void turnLeft45(void)
 	motor[MotorRechts] = 50;
 	motor[MotorLinks] = -40;
 	while(nMotorEncoder[MotorRechts] != en){
-			if(SensorValue[LichtL] < min_light){     // lijn is gevonden
-			stopTask(zoek);
-			playSound(soundBeepBeep);
-			startTask(rij);
-   }
+			//if(SensorValue[LichtL] < min_light){     // lijn is gevonden
+			//stopTask(zoek);
+			//playSound(soundBeepBeep);
+			////startTask(rij);
+   //}
   }
 }
 
 void turnRight90(void)                         // 90 graden bocht
 {
-	int en = nMotorEncoder[MotorLinks] + 350;
+	int en = nMotorEncoder[MotorLinks] + 370;
 	nMotorEncoderTarget[MotorLinks] = en;
 	motor[MotorLinks] = 50;
 	motor[MotorRechts] = -20;
 	while(nMotorEncoder[MotorLinks] != en){
-			if(SensorValue[LichtL] < min_light){     // lijn is gevonden
-			stopTask(zoek);
-			playSound(soundBeepBeep);
-			startTask(rij);
-   }
+			//if(SensorValue[LichtL] < min_light){     // lijn is gevonden
+			//stopTask(zoek);
+			//playSound(soundBeepBeep);
+			////startTask(rij);
+   //}
 	}
 }
 
 void turnLeft90(void)
 {
-	int en = nMotorEncoder[MotorRechts] + 200;
+	int en = nMotorEncoder[MotorRechts] + 250;
 	nMotorEncoderTarget[MotorRechts] = en;
 	motor[MotorRechts] = 50;
 	motor[MotorLinks] = -40;
 	while(nMotorEncoder[MotorRechts] != en){
-		if(SensorValue[LichtL] < min_light){     // lijn is gevonden
-			stopTask(zoek);
-			playSound(soundBeepBeep);
-			startTask(rij);
-   }
+		//if(SensorValue[LichtL] < min_light){     // lijn is gevonden
+		//	stopTask(zoek);
+		//	playSound(soundBeepBeep);
+		//	//startTask(rij);
+  // }
 	}
 }
 
 void turnStreat(void)
 {
-	int en = nMotorEncoder[MotorRechts] + 70;
+	int en = nMotorEncoder[MotorRechts] + 150;
 	nMotorEncoderTarget[MotorRechts] = en;
 	motor[MotorRechts] = forwardSpeed;												//rij met een speed van 20 rechtdoor
 	motor[MotorLinks] = forwardSpeed;
 	while(nMotorEncoder[MotorRechts] != en){
-		if(SensorValue[LichtL] < min_light){     // lijn is gevonden
-			stopTask(zoek);
-			playSound(soundBeepBeep);
-			startTask(rij);
-   }
+		//if(SensorValue[LichtL] < min_light){     // lijn is gevonden
+		//	stopTask(zoek);
+		//	playSound(soundBeepBeep);
+		//	//startTask(rij);
+  // }
 	}
 }
 
@@ -154,11 +157,11 @@ void turnBack(void)
 	motor[MotorRechts] = backwardSpeed;    // rij met een speed van 20 achteruit
 	motor[MotorLinks] = backwardSpeed;
   while(nMotorEncoder[MotorRechts] != en){
-	 if(SensorValue[LichtL] < min_light){     // lijn is gevonden
-			stopTask(zoek);
-			playSound(soundBeepBeep);
-			startTask(rij);
-   }
+	 //if(SensorValue[LichtL] < min_light){     // lijn is gevonden
+		//	stopTask(zoek);
+		//	playSound(soundBeepBeep);
+		//	//startTask(rij);
+  // }
 	}
 }
 
@@ -167,7 +170,7 @@ task main()
 {
 		//min_light = SensorValue[LichtL];
 		//max_light = SensorValue[LichtR];
-		startTask(rij);
+		startTask(zoek);
 
 }
 
