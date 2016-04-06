@@ -14,8 +14,10 @@ float get_offset(void);
 void turnStreat(void);
 void turnLeft(void);
 void turnRight(void);
+void turnBack(void);
 task stop_rij_auto();
 task rij_auto();
+task ramp_up_auto();
 task scancode();
 task sound();
 task sonar();
@@ -25,9 +27,11 @@ task sonar();
 float test = 0;
 Queue q;
 float turn = 0;
+string btn = "";
 int max_light = 0;
 int min_light = 0;
-float Tp = 60; // target power bij het rechtdoorrijden van de robot.
+float Tp = 0;
+float fTp = 60; // target power bij het rechtdoorrijden van de robot.
 float Kp = 3.5; // constante varriable die representatief is aan de proportional range van de error (met hoeveel gaat de snelheid omhoog / omlaag per error niveau).
 float Ki = 1; // Constante varriable die een correctie geeft voor de integral. deze word grotendeels getweakt via trial en error
 float Kd = 55; // Constante varriable die een correctie geeft voor de derivative. Ook deze word grootendeels getweakt via trial en error.
@@ -82,6 +86,16 @@ void turnLeft(void)
 	while(SensorValue[LichtL] < offset){}
 }
 
+void turnBack(void)
+{
+	motor[MotorRechts] = Tp;
+	motor[MotorLinks] = -Tp;
+	int en = nMotorEncoder[MotorRechts] + 500;
+	while(nMotorEncoder[MotorRechts] < en){test = nMotorEncoder[MotorRechts];}
+	motor[MotorRechts] = 0;
+	motor[MotorLinks] = 0;
+}
+
 void turnStreat(void)
 {
 	motor[MotorRechts] = Tp;
@@ -100,6 +114,14 @@ float get_offset(void)
 	return offset;
 }
 
+task ramp_up_auto(){
+	Tp = 10;
+	while(Tp < fTp){
+		Tp += 2;
+		wait10Msec(10);
+	}
+}
+
 task stop_rij_auto(){
 	stopTask(sonar);
 	stopTask(sound);
@@ -107,8 +129,13 @@ task stop_rij_auto(){
 	stopTask(rij_auto);
 	init_queue(&q);
 	integral = perverror = derivative = error = triggerScan = pos = telzwart = 0;
-	motor[MotorRechts]=0;
-	motor[MotorLinks]=0;
+
+	while(Tp > 0){
+		Tp -= 2;
+		motor[MotorRechts]=Tp;
+		motor[MotorLinks]=Tp;
+		wait10Msec(10);
+	}
 	auto = false;
 	wait10Msec(200);
 	motor[Head] = -nMotorEncoder[Head] / 4;
@@ -118,6 +145,7 @@ task stop_rij_auto(){
 
 task rij_auto()
 {
+	startTask(ramp_up_auto);
 	startTask(sound);
 	startTask(sonar);
 	startTask(scancode);
@@ -165,6 +193,7 @@ task rij_auto()
 			//pos = 0;
 			switch(dequeue(&q)){
 			case 1:
+				turnBack();
 			case 2:
 				turnStreat();
 				break;
@@ -290,21 +319,94 @@ task sound(){
 	}
 }
 
+task man_ramp_up(){
+	if(btn == "UP"){
+		Tp = 10;
+		while(Tp < fTp){
+			Tp += 2;
+			motor[MotorLinks] = Tp;
+			motor[MotorRechts] = Tp;
+			wait10Msec(1);
+		}
+		}else if(btn == "DOWN"){
+		Tp = 10;
+		while(Tp < fTp){
+			Tp += 2;
+			motor[MotorLinks] = -Tp;
+			motor[MotorRechts] = -Tp;
+			wait10Msec(1);
+		}
+		}else if(btn == "LEFT"){
+		Tp = 10;
+		while(Tp < fTp){
+			Tp += 2;
+			motor[MotorLinks] = -Tp;
+			motor[MotorRechts] = Tp;
+			wait10Msec(1);
+		}
+		}else if(btn == "RIGHT"){
+		Tp = 10;
+		while(Tp < fTp){
+			Tp += 2;
+			motor[MotorLinks] = Tp;
+			motor[MotorRechts] = -Tp;
+			wait10Msec(1);
+		}
+	}
+}
+
+task man_ramp_down(){
+	if(btn == "UP"){
+		while(Tp > 0){
+			Tp -= 2;
+			motor[MotorLinks] = Tp;
+			motor[MotorRechts] = Tp;
+			wait10Msec(1);
+		}
+		}else if(btn == "DOWN"){
+		while(Tp > 0){
+			Tp -= 2;
+			motor[MotorLinks] = -Tp;
+			motor[MotorRechts] = -Tp;
+			wait10Msec(1);
+		}
+		}else if(btn == "LEFT"){
+		while(Tp > 0){
+			Tp -= 2;
+			motor[MotorLinks] = -Tp;
+			motor[MotorRechts] = Tp;
+			wait10Msec(1);
+		}
+		}else if(btn == "RIGHT"){
+		while(Tp > 0){
+			Tp -= 2;
+			motor[MotorLinks] = Tp;
+			motor[MotorRechts] = -Tp;
+			wait10Msec(1);
+		}
+	}
+	btn = "";
+}
+
 task main()
 {
-	int mailbox = 5;
+	int mailbox = 5, a = 0;
 	string btmessage="";
 	nMotorEncoder[Head] = 0;
+	nMotorEncoder[MotorLinks] = 0;
+	nMotorEncoder[MotorRechts] = 0;
 	init_queue(&q);
 
 	while(true)
 	{
-		test = nMotorEncoder[Head];
+		//test = nMotorEncoder[Head]; //debug
+
 		// lees mailbox
-		int a = cCmdMessageGetSize(mailbox);  //haal de hoeveel bytes in eerst volgende bericht
+		a = cCmdMessageGetSize(mailbox);  //haal de hoeveel bytes in eerst volgende bericht
 		if(a > 0)
 		{
 			cCmdMessageRead(btmessage, a, mailbox); // lees aantal bytes a in en plaats ze in btmessage
+
 
 			if(btmessage == "AUTO")
 			{
@@ -324,28 +426,32 @@ task main()
 			{
 				if(btmessage == "UP")
 				{
-					motor[MotorRechts]=100;
-					motor[MotorLinks]=100;
+					btn = "UP";
+					stopTask(man_ramp_down);
+					startTask(man_ramp_up);
 				}
 				else if(btmessage == "DOWN")
 				{
-					motor[MotorRechts]=-100;
-					motor[MotorLinks]=-100;
+					btn = "DOWN";
+					stopTask(man_ramp_down);
+					startTask(man_ramp_up);
 				}
 				else if(btmessage == "LEFT")
 				{
-					motor[MotorRechts]=100;
-					motor[MotorLinks]=-100;
+					btn = "LEFT";
+					stopTask(man_ramp_down);
+					startTask(man_ramp_up);
 				}
 				else if(btmessage == "RIGHT")
 				{
-					motor[MotorRechts]=-100;
-					motor[MotorLinks]=100;
+					btn = "RIGHT";
+					stopTask(man_ramp_down);
+					startTask(man_ramp_up);
 				}
 				else if(btmessage == "NULL")
 				{
-					motor[MotorRechts]=0;
-					motor[MotorLinks]=0;
+					stopTask(man_ramp_up);
+					startTask(man_ramp_down);
 				}
 			}
 			else
