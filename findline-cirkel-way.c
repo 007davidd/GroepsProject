@@ -13,6 +13,8 @@ int count = 0;                                      //bebug
 int offset = 45;																		// offset zwarte lijn
 int Lspeed = 10;																		//init speed linker wiel
 float Omtrek = 2500;																//init omtrek cirkel
+int lijn = 0;
+
 
 task rij(){
 			motor[MotorRechts] = 30;												//rij met een speed van 30 rechtdoor
@@ -44,7 +46,8 @@ task circle()
 task start()
 {
 	stopTask(circle);
-	startTask(rij);																//test functie stopcirkel start // auto
+	startTask(rij);
+	//test functie stopcirkel start // auto
 }
 
 
@@ -61,11 +64,18 @@ void Circle(int Lspeed, float Omtrek)
 			playSound(soundBeepBeep);
 			motor[MotorRechts] = 0;
 			motor[MotorLinks] = 0;
-			   //stopTask(circle);
-				//startTask(rij)
-			startTask(start);
+			lijn = 1;
 		}
+		break;
 	}
+	if(lijn == 1)
+	{
+		lijn = 0;
+		startTask(start);
+  }
+
+
+
 }
 
 
