@@ -23,10 +23,8 @@ task sonar();
 // Globale variable
 Queue q;
 float turn = 0;
-string btn = "";
 int max_light = 0;
 int min_light = 0;
-float fTp = 60; // target power bij het rechtdoorrijden van de robot.
 float Kp = 3.5; // constante varriable die representatief is aan de proportional range van de error (met hoeveel gaat de snelheid omhoog / omlaag per error niveau).
 float Ki = 1; // Constante varriable die een correctie geeft voor de integral. deze word grotendeels getweakt via trial en error
 float Kd = 55; // Constante varriable die een correctie geeft voor de derivative. Ook deze word grootendeels getweakt via trial en error.
