@@ -4,6 +4,7 @@ void turnRight(void)
 {
 	motor[MotorRechts] = 0;
 	motor[MotorLinks] = 0;
+	wait1Msec(100);
 
 	nMotorEncoderTarget[Head] = 100;
 	motor[Head] = 50;
@@ -22,6 +23,7 @@ void turnLeft(void)
 {
 	motor[MotorRechts] = 0;
 	motor[MotorLinks] = 0;
+	wait1Msec(100);
 
 	nMotorEncoderTarget[Head] = 100;
 	motor[Head] = -50;
