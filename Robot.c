@@ -44,6 +44,7 @@ bool auto = false;
 //float lightrr = 0; 	//debug varriable voor het checken van lichtsensoren tijdens de rit
 //float lightll = 0; 	//debug varriable voor het checken van lichtsensoren tijdens de rit
 
+//kalibreer de PID op basis van de twee licht sensoren.
 float get_offset(void)
 {
 	//kalibreer
@@ -54,6 +55,7 @@ float get_offset(void)
 	return offset;
 }
 
+//verhoog rustig de snelheid van de motoren voor de PID
 task ramp_up_auto(){
 	Tp = 10;
 	while(Tp < fTp){
@@ -66,6 +68,8 @@ task ramp_up_auto(){
 	}
 }
 
+//stop alle tasks die te maken hebben met het lijn volg systeem
+//en reset alle dynamische variabele.
 task stop_rij_auto(){
 	stopTask(rij_auto);
 	stopTask(sonar);
@@ -74,6 +78,7 @@ task stop_rij_auto(){
 	init_queue(&q);
 	integral = perverror = derivative = error = triggerScan = pos = telzwart = 0;
 	auto = false;
+	//neem geleidelijk de snelheid af, tot stoppen.
 	while(Tp > 0){
 		Tp -= 6;
 		if (Tp < 0)
@@ -84,12 +89,14 @@ task stop_rij_auto(){
 		motor[MotorLinks]=Tp;
 		wait10Msec(10);
 	}
+	//reset het hoofdje.
 	wait10Msec(200);
 	motor[Head] = -nMotorEncoder[Head] / 4;
 	while(nMotorEncoder[Head] != 0){}
 	motor[Head] = 0;
 }
 
+//vold de lijn en start alle tasks.
 task rij_auto()
 {
 	startTask(ramp_up_auto);
@@ -121,6 +128,7 @@ task rij_auto()
 		//lightrr = SensorValue[LichtR]; //debug
 		//lightll = SensorValue[LichtL]; //debug
 
+		//maak een beslissing bij een kruispunt.
 		if (SensorValue[LichtL] < offset && SensorValue[LichtR] < offset)
 		{
 			que = dequeue(&q);
@@ -192,6 +200,7 @@ task scancode()
 	}
 }
 
+//scant voor opstakels
 task sonar()
 {
 	while (true)
@@ -203,6 +212,7 @@ task sonar()
 	}
 }
 
+//star wars melody
 task sound(){
 	//star wars geluitje
 	while(true){
@@ -269,15 +279,18 @@ task main()
 
 			if(btmessage == "AUTO")
 			{
+				//start het lijn volg systeem
 				auto = true;
 				startTask(rij_auto);
 			}
 			else if(btmessage == "MANUAL")
 			{
+				//stop het lijn volg systeem
 				startTask(stop_rij_auto);
 			}
 			else if(btmessage == "CALIBRATE")
 			{
+				//kalibreer de PID
 				startTask(stop_rij_auto);
 				offset = get_offset();
 			}
@@ -315,6 +328,7 @@ task main()
 			}
 			else
 			{
+				//zet instructies in de que om bij kruispunten uit te voeren.
 				if(btmessage == "UP")
 				{
 					enqueue(&q, 1);
